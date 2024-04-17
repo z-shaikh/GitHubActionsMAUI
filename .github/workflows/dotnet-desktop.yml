@@ -18,10 +18,6 @@ jobs:
 
       # https://docs.github.com/en/actions/deployment/deploying-xcode-applications/installing-an-apple-certificate-on-macos-runners-for-xcode-development
       # github docs for installing cert and provisioning profile
-
-      
-      - name: List files in the build 
-        run: ls -R 
         
       - name: Install the Apple certificate and provisioning profile
         env:
@@ -79,13 +75,8 @@ jobs:
         run: |
           dotnet build -f net8.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
 
-      - name: List files in the project 
-        run: 
-            cd GitHubActionsMAUI
-            ls -R
-            
       - name: List files in the build directory
-        run: ls -R GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-arm64/
+        run: ls -R GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-arm64/*.app
 
 #       - name: Build and Run UnitTests
 #         shell: bash
@@ -97,4 +88,4 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/**/*.app
+            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/*.app
