@@ -18,7 +18,16 @@ jobs:
 
       # https://docs.github.com/en/actions/deployment/deploying-xcode-applications/installing-an-apple-certificate-on-macos-runners-for-xcode-development
       # github docs for installing cert and provisioning profile
+
       
+      - name: List files in the build 
+        run: ls -R 
+        
+      - name: List files in the project 
+        run: 
+            cd GitHubActionsMAUI
+            ls -R
+        
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -58,7 +67,7 @@ jobs:
         run: |
           dotnet nuget locals all --clear 
           dotnet workload install maui --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
-          dotnet workload install android ios maccatalyst tvos macos maui wasm-tools --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
+          dotnet workload install android ios --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
       
       - name: Select X-code 
         uses: maxim-lobanov/setup-xcode@v1
@@ -74,9 +83,9 @@ jobs:
         shell: bash
         run: |
           dotnet build -f net8.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
+
       - name: List files in the build directory
         run: ls -R bin/Debug/net8.0-ios/iossimulator-arm64/
-             ls -R bin/Debug/net8.0-ios/iossimulator-arm64/**/
 
 #       - name: Build and Run UnitTests
 #         shell: bash
@@ -88,4 +97,4 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            bin/Debug/net8.0-ios/iossimulator-x64/**/*.app
+            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/**/*.app
