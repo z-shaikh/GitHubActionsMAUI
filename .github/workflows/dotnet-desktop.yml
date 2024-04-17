@@ -88,4 +88,4 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/*.app
+            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/GitHubActionsMAUI.app
