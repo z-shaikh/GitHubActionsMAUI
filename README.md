@@ -1,0 +1,1 @@
+[![CICD Test](https://github.com/z-shaikh/GitHubActionsMAUI/actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](https://github.com/z-shaikh/GitHubActionsMAUI/actions/workflows/dotnet-desktop.yml)
