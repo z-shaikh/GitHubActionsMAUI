@@ -76,7 +76,7 @@ jobs:
           dotnet build -f net8.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
 
       - name: List files in the build directory
-        run: ls -R GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-arm64/*.app
+        run: ls -R GitHubActionsMAUI/bin/
 
 #       - name: Build and Run UnitTests
 #         shell: bash
@@ -88,4 +88,4 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-x64/GitHubActionsMAUI.app
+            GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-arm64/GitHubActionsMAUI.app
