@@ -23,11 +23,6 @@ jobs:
       - name: List files in the build 
         run: ls -R 
         
-      - name: List files in the project 
-        run: 
-            cd GitHubActionsMAUI
-            ls -R
-        
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -84,8 +79,13 @@ jobs:
         run: |
           dotnet build -f net8.0-ios -c Debug /p:packageApp=false /p:buildForSimulator=true /p:ArchiveOnBuild=false
 
+      - name: List files in the project 
+        run: 
+            cd GitHubActionsMAUI
+            ls -R
+            
       - name: List files in the build directory
-        run: ls -R bin/Debug/net8.0-ios/iossimulator-arm64/
+        run: ls -R GitHubActionsMAUI/bin/Debug/net8.0-ios/iossimulator-arm64/
 
 #       - name: Build and Run UnitTests
 #         shell: bash
