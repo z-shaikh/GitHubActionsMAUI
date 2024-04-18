@@ -43,7 +43,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
-	  <CodesignProvision>ix_field_distribution_adhoc</CodesignProvision>
+	  <CodesignProvision>Tribia Distribution (Interaxo Field)</CodesignProvision>
 	  <CodesignKey>Apple Distribution: Tribia AS (NEH5Z8RG6S)</CodesignKey>
 	</PropertyGroup>
 	<ItemGroup>
