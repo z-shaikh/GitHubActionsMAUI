@@ -91,4 +91,4 @@ jobs:
         with:
           name: artifacts-ios
           path: |
-            GitHubActionsMAUI/bin/Release/net8.0-ios/iossimulator-arm64/GitHubActionsMAUI.ipa
+            GitHubActionsMAUI/bin/Release/net8.0-ios/ios-arm64/publish/GitHubActionsMAUI.ipa
