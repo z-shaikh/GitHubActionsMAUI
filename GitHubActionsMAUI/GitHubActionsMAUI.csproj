@@ -46,6 +46,11 @@
 	  <CodesignProvision>Tribia Distribution (Interaxo Field)</CodesignProvision>
 	  <CodesignKey>Apple Distribution: Tribia AS (NEH5Z8RG6S)</CodesignKey>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningKeyStore>/Users/zubershaikh/Desktop/Secrets/Certificates old/unizite as signing certificate.keystore</AndroidSigningKeyStore>
+	  <AndroidSigningStorePass>FornebuOslo2015</AndroidSigningStorePass>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
