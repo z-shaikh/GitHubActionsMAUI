@@ -51,6 +51,7 @@
 	  <AndroidSigningKeyStore>/Users/zubershaikh/Desktop/Secrets/Certificates old/unizite as signing certificate.keystore</AndroidSigningKeyStore>
 	  <AndroidSigningStorePass>FornebuOslo2015</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>tribia</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>FornebuOslo2015</AndroidSigningKeyPass>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
