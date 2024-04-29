@@ -93,3 +93,21 @@ jobs:
           name: artifacts-ios
           path: |
             GitHubActionsMAUI/bin/Release/net8.0-ios/ios-arm64/publish/GitHubActionsMAUI.ipa
+
+                       
+      # uses: Apple-Actions/upload-testflight-build@54dc215b4cd5529730db39f11c84efdb71414e07
+      # You may pin to the exact commit or the version.
+      - name: Upload app to TestFlight
+      - uses: Apple-Actions/upload-testflight-build@v1
+        with:
+          # The path to the app (ipa etc)
+            app-path: |
+              GitHubActionsMAUI/bin/Release/net8.0-ios/ios-arm64/publish/GitHubActionsMAUI.ipa
+              
+          # The AppStoreConnect API Key Issuer Identifier
+            issuer-id: 
+          # The Key ID for AppStore Connect API
+            api-key-id: 
+          # The PKCS8 format Private Key for AppStore Connect API
+            api-private-key: 
+          
