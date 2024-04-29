@@ -1,8 +1,8 @@
 name: CICD Test
 
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
     
@@ -25,6 +25,7 @@ jobs:
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
           BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          
         run: |
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
@@ -72,35 +73,6 @@ jobs:
         run: |
           dotnet restore GitHubActionsMAUI.sln
           
-      # - name: Build Android App
-      #   shell: bash
-      #   run: |
-      #       dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj -f:net8.0-android -c:Release
-      
-      # - name: List files in the build directory
-      #   run: ls -R GitHubActionsMAUI/bin/Release/
-
-      # Store Android Signing Keystore and password in Secrets using base64 encoding
-      # https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
-      # commandline util to encode to base64 on windows
-      # - name: Extract Android signing key from env
-      #   shell: bash
-      #   run: |
-      #       echo "${{ secrets.RELEASE_KEYSTORE }}" > android/release.jks.base64
-      #       base64 -d android/release.jks.base64 > android/release.decrypted.jks
-
-      #   # # check android SDK paths etc in installed VM : https://github.com/actions/virtual-environments#available-environments
-      # - name: Sign dev build
-      #   shell: bash
-      #   run: 
-      #     jarsigner -keystore android/release.decrypted.jks -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar ./android/app/build/outputs/bundle/release/app-release-signed.aab ./android/app/build/outputs/bundle/release/app-release.aab release
-
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #       name: artifacts-android
-      #       path: |
-      #         GitHubActionsMAUI/bin/Release/net8.0-android/publish/GitHubActionsMAUI.apk
-        
       # https://docs.microsoft.com/en-us/dotnet/maui/ios/deployment/overview
       - name : Build iOS App
         shell: bash
