@@ -10,7 +10,7 @@ env:
     DOTNETVERSION: 8.0.x
 
 jobs:  
-  buildiOS:
+  buildAndroid:
     runs-on: macos-14
     
     steps:
