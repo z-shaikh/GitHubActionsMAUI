@@ -129,10 +129,10 @@ jobs:
               GitHubActionsMAUI/bin/Release/net8.0-ios/ios-arm64/publish/GitHubActionsMAUI.ipa
               
           # The AppStoreConnect API Key Issuer Identifier
-            issuer-id: secrets.ISSUER_ID
+            issuer-id: ${{ secrets.ISSUER_ID }}
           # The Key ID for AppStore Connect API
-            api-key-id: secrets.KEY_ID_STORE_CONNECT
+            api-key-id: ${{ secrets.KEY_ID_STORE_CONNECT }}
           # The PKCS8 format Private Key for AppStore Connect API
-            api-private-key: secrets.API_PRIVATE_KEY_STORE_CONNECT
+            api-private-key: ${{ secrets.API_PRIVATE_KEY_STORE_CONNECT }}
 
           
