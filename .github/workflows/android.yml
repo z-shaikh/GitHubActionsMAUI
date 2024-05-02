@@ -51,7 +51,7 @@ jobs:
       - name: Build Android App
         shell: bash
         run: |
-            dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj -c Release -f net8.0-android /p:AndroidPackageFormats=aab --no-restore
+            dotnet publish -c:Release -f net8.0-android
 
       - name: List files in the build directory
         run: ls -R GitHubActionsMAUI/bin/Release/
