@@ -11,7 +11,7 @@ env:
 
 jobs:  
   buildAndroid:
-    runs-on: windows-2022
+    runs-on: macos-14
     
     steps:
 
