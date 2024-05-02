@@ -26,9 +26,10 @@ jobs:
       - name: Install .NET MAUI
         shell: bash
         run: |
-          dotnet nuget locals all --clear 
-          dotnet workload install maui --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
-          dotnet workload install android --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
+          pwd
+          # dotnet nuget locals all --clear 
+          # dotnet workload install maui --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
+          # dotnet workload install android --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json --source https://api.nuget.org/v3/index.json
 
        # Store Android Signing Keystore and password in Secrets using base64 encoding
       # https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
@@ -36,21 +37,23 @@ jobs:
       - name: Extract Android signing key from env
         shell: bash
         run: |
+            pwd
             echo "${{ secrets.RELEASE_KEYSTORE }}" > encrypted.keystore
             base64 -d -i encrypted.keystore -o decrypted.keystore
             realpath decrypted.keystore
-      - name: Restore nuget packages
-        run: |
-          dotnet restore GitHubActionsMAUI.sln      
+      # - name: Restore nuget packages
+      #   run: |
+      #     dotnet restore GitHubActionsMAUI.sln      
       
       - name: Build Android App
         shell: bash
         run: |
+            pwd
             ls -R GitHubActionsMAUI
-            dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj -c:Release -f:net8.0-android  /p:AndroidPackageFormats=aab  /p:AndroidKeyStore=true  /p:AndroidSigningKeyStore="GitHubActionsMAUI/decrypted.keystore" /p:AndroidSigningKeyAlias="${{ secrets.KEY_ALIAS }}" /p:AndroidSigningKeyPass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" --no-restore
+            # dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj -c:Release -f:net8.0-android  /p:AndroidPackageFormats=aab  /p:AndroidKeyStore=true  /p:AndroidSigningKeyStore="GitHubActionsMAUI/decrypted.keystore" /p:AndroidSigningKeyAlias="${{ secrets.KEY_ALIAS }}" /p:AndroidSigningKeyPass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" --no-restore
 
-      - name: List files in the build directory
-        run: ls -R GitHubActionsMAUI/bin/Release/
+      # - name: List files in the build directory
+      #   run: ls -R GitHubActionsMAUI/bin/Release/
    
 
         # # check android SDK paths etc in installed VM : https://github.com/actions/virtual-environments#available-environments
@@ -59,8 +62,8 @@ jobs:
       #   run: 
       #     jarsigner -keystore decrypted.keystore -storepass "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" -signedjar GitHubActionsMAUI/bin/Release/net8.0-android/com.unizite.app-Signed.aab GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab release
 
-      - uses: actions/upload-artifact@v2
-        with:
-            name: artifacts-android
-            path: |
-              GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #       name: artifacts-android
+      #       path: |
+      #         GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab
