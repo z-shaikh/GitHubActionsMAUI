@@ -46,16 +46,7 @@ jobs:
       - name: Build Android App
         shell: bash
         run: |
-            dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj
-            -c:Release
-            -f:net8.0-android 
-            /p:AndroidPackageFormats=aab 
-            /p:AndroidKeyStore=true 
-            /p:AndroidSigningKeyStore="decrypted.keystore"
-            /p:AndroidSigningKeyAlias="${{ secrets.KEY_ALIAS }}"
-            /p:AndroidSigningKeyPass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}"
-            /p:AndroidSigningStorePass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}"
-            --no-restore
+            dotnet publish GitHubActionsMAUI/GitHubActionsMAUI.csproj -c:Release -f:net8.0-android  /p:AndroidPackageFormats=aab  /p:AndroidKeyStore=true  /p:AndroidSigningKeyStore="decrypted.keystore" /p:AndroidSigningKeyAlias="${{ secrets.KEY_ALIAS }}" /p:AndroidSigningKeyPass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" /p:AndroidSigningStorePass="${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" --no-restore
 
       - name: List files in the build directory
         run: ls -R GitHubActionsMAUI/bin/Release/
