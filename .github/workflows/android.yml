@@ -62,8 +62,6 @@ jobs:
         run: |
             pwd
             ls -R GitHubActionsMAUI/bin/Release/
-            echo (find "GitHubActionsMAUI" -name com.unizite.app-Signed.aab)
-   
 
         # # check android SDK paths etc in installed VM : https://github.com/actions/virtual-environments#available-environments
       # - name: Sign dev build
@@ -78,4 +76,4 @@ jobs:
               pwd
               ls -R GitHubActionsMAUI/bin/Release/
               GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab
-              GitHubActionsMAUI/bin/Release/net8.0-android/publish/*.aab
+              GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app.aab
