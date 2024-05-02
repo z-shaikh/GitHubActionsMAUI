@@ -11,14 +11,13 @@ env:
 
 jobs:  
   buildAndroid:
-    runs-on: macos-14
+    runs-on: windows-2022
     
     steps:
-      - uses: actions/checkout@v2
 
       # https://docs.github.com/en/actions/deployment/deploying-xcode-applications/installing-an-apple-certificate-on-macos-runners-for-xcode-development
       # github docs for installing cert and provisioning profile
-        
+      - uses: actions/checkout@v2
       - name: Setup .NET SDK ${{env.DOTNETVERSION}}
         uses: actions/setup-dotnet@v1
         with:
@@ -34,6 +33,20 @@ jobs:
       - name: Restore nuget packages
         run: |
           dotnet restore GitHubActionsMAUI.sln
+
+      # - uses: actions/checkout@v3
+      # - name: Setup Keystore File
+      #   run: |
+      #     echo "${{ secrets.RELEASE_KEYSTORE }}" > myapp.keystore.asc
+      #     gpg -d --passphrase "${{ secrets.RELEASE_KEYSTORE_PASSWORD }}" --batch myapp.keystore.asc > myapp.keystore 
+
+      # - name: Decode Keystore
+      #   id: decode_keystore
+      #   uses: timheuer/base64-to-file@v1
+      #   with:
+      #     fileDir: '${{ github.workspace }}\${{ inputs.project-folder }}'
+      #     fileName: 'ourkeystore.jks'
+      #     encodedString: ${{ secrets.keystore }}
           
       - name: Build Android App
         shell: bash
