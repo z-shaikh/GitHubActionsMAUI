@@ -69,7 +69,7 @@ jobs:
           serviceAccountJsonPlainText: "${{ secrets.SERVICEACCOUNTJSON }}"
           packageName: "com.unizite.app"
           # The Android release file to upload (.apk or .aab)
-          releaseFile: "GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab"
+          releaseFiles: "GitHubActionsMAUI/bin/Release/net8.0-android/publish/com.unizite.app-Signed.aab"
           # The Android release file(s) to upload (.apk or .aab). Separated by  a ',' for multiple artifacts. Supports glob
           track: "Closed testing - Beta"
           # In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0.              
