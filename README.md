@@ -1,3 +1,7 @@
+#### This is the sample project to create a CICD pipeline using the GitHub Actions workflow to build & distribute MAUI Android & iOS builds to Google Play Store & Apple App Store.
+
+
+
 ## iOS
 
 Details to create the iOS required api keys to publish the ipa on Test Flight(App Store) can be found on:
