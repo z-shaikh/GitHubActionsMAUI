@@ -4,6 +4,9 @@
 
 ## iOS
 
+Command to copy base64
+`base64 -i Certificates.p12 | pbcopy`
+
 Details to create the iOS required api keys to publish the ipa on Test Flight(App Store) can be found on:
 https://docs.codemagic.io/yaml-publishing/app-store-connect/
 
