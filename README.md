@@ -2,9 +2,11 @@
 
 
 
-## iOS
+# iOS 📱
 
 Command to copy base64
+
+
 `base64 -i Certificates.p12 | pbcopy`
 
 Details to create the iOS required api keys to publish the ipa on Test Flight(App Store) can be found on:
@@ -15,7 +17,7 @@ A visual representation can be found on: https://youtu.be/JfVu126Dfyc?feature=sh
 
 (video is old and can be considered just for an refrence, refer documentatioon for updated directions)
 
-## Android
+# Android 📱
 
 On https://console.cloud.google.com/ create a new project & download the json. The same json will be used for Secrets.SERVICE_ACCOUNT_JSON. It will create a new user.
 
