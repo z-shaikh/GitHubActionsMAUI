@@ -1,12 +1,13 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-  repository_dispatch:
-    types:
-      - custom-event
+  workflow_dispatch:
+#   push:
+    # branches:
+    #   - main
+#   repository_dispatch:
+    # types:
+    #   - custom-event
 
 jobs:
   build:
